@@ -27,18 +27,41 @@ public class SampleController {
 	
 	
 	@GetMapping("/user/userid")
-	public String userId(@RequestParam("userid") String uid, Model model) {
-		
+	public String userId(@RequestParam(value="userid",required=false) String uid, Model model) {
+		/*
+		 * required = true 옵션은 디폴트가 트루이고 , 써놓지않으며 디폴트값 적용
+		 * 이 경우에는 반드시 주소창에 userid 파라미터 값을 넣어서 HTTP 요청을 넣어야한다. 안그러면 페이지 에러가 발생한다.  
+		 * http://.localhost:8024/user/userid?userid=koreamonster
+		 *false 지정하면 파라미터 값을 넣지 않고도  에러가 발생하지 않는다
+		 * 
+		 */
 		model.addAttribute("userid", uid);
 		
 		return "/user/userinfo"; //userinfo.html
 	}
 	
+	@GetMapping("/user/userparams")
+	public String userParams(
+			@RequestParam(value = "userid") String uid,
+			@RequestParam(value = "username") String uname,
+			@RequestParam(value = "useremail") String uemail,
+			@RequestParam(value = "userhp") String uhp,
+			Model model) {
+		
+		model.addAttribute("userid",uid);
+		model.addAttribute("username",uname);
+		model.addAttribute("useremail",uemail);
+		model.addAttribute("userhp",uhp);
+		
+		
+		return "/user/userinfo";
+	}
 	
 	
 	
 	
+	}
 	
 	
 	
-}
+
