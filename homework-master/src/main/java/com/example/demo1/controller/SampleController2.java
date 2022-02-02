@@ -21,7 +21,6 @@ public class SampleController2 {
 		model.addAttribute("membername",membername);
 		model.addAttribute("memberid",memberid);
 		model.addAttribute("memberemail",memberemail);
-		 
 		
 		/*
 		 * Get방식 @GetMapping : @RequestParam post방식 @PostMapping
@@ -33,8 +32,6 @@ public class SampleController2 {
 		 *//*
 			 * System.out.println("성공"); System.out.println(req);
 			 */
-		
-		
 		
 		return "/post/post"; //post.html
 		
